@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="home" class="container justify-content-center mt-3 mb-3">
+        <div th:if="${!#strings.isEmpty(errorMsg)}" class="alert alert-danger" th:text="${errorMsg}"></div>
+        <div th:if="${!#strings.isEmpty(successMsg)}" class="alert alert-success" th:text="${successMsg}"></div>
+        <div th:if="${session.logoutMsg != null}" class="alert alert-success" th:text="${session.logoutMsg}"></div>
+        <div class="container-base">
+        <h1>Welcome to Contacts CRM</h1>
+        <p class="lead">This is a simple Contacts CRM application.</p>
+            <button class="btn btn-primary" th:if="${session.isCurrentUser != null ? !session.isCurrentUser : true}">
+                <a th:href="@{/auth/signIn}" class="btn btn-primary" >Sign In</a>
+            </button>
+        </div>
+        <div class="container-base">
+            <div class="container-image">
+                <img th:src="@{/images/1708881100628.jpeg}" class="img-fluid" alt="home-img">
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
